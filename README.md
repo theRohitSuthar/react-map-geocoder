@@ -1,4 +1,4 @@
-# react-native-geocoding
+# react-map-geocoder
 
 A geocoding module for [React Native](https://github.com/facebook/react-native) to transform a description of a location (i.e. street address, town name, etc.) into geographic coordinates (i.e. latitude and longitude) and vice versa.
 
@@ -7,21 +7,37 @@ This module uses [Google Maps Geocoding API](https://developers.google.com/maps/
 ## Install
 
 ```shell
-npm install --save react-native-geocoding
+npm install --save react-map-geocoder
 ```
 
 ## Example
 
 ```js
-import Geocoder from 'react-native-geocoding';
+import RNGeocoder from 'react-map-geocoder';
+
+RNGeocoder.init("YOUR_GOOGLE_API_KEY");
+
+// Reverse geocoding
+RNGeocoder.from(37.7749, -122.4194)
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+
+// Reverse geocoding with language
+RNGeocoder.from([37.7749, -122.4194, "es"])
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+```
+
+```js
+import RNGeocoder from 'react-map-geocoder';
 
 // Initialize the module (needs to be done only once)
-Geocoder.init("xxxxxxxxxxxxxxxxxxxxxxxxx"); // use a valid API key
+RNGeocoder.init("xxxxxxxxxxxxxxxxxxxxxxxxx"); // use a valid API key
 // With more options
-// Geocoder.init("xxxxxxxxxxxxxxxxxxxxxxxxx", {language : "en"}); // set the language
+// RNGeocoder.init("xxxxxxxxxxxxxxxxxxxxxxxxx", {language : "en"}); // set the language
 
 // Search by address
-Geocoder.from("Colosseum")
+RNGeocoder.from("Colosseum")
 		.then(json => {
 			var location = json.results[0].geometry.location;
 			console.log(location);
@@ -29,7 +45,7 @@ Geocoder.from("Colosseum")
 		.catch(error => console.warn(error));
 
 // Search by address, with a biased geo-bounds
-Geocoder.from("Pyramid", {
+RNGeocoder.from("Pyramid", {
 		southwest: {lat: 36.05, lng: -115.25},
 		northeast: {lat: 36.16, lng: -115.10}})
 		.then(json => {
@@ -39,7 +55,7 @@ Geocoder.from("Pyramid", {
 		.catch(error => console.warn(error));
 
 // Search by geo-location (reverse geo-code)
-Geocoder.from(41.89, 12.49)
+RNGeocoder.from(41.89, 12.49)
 		.then(json => {
         		var addressComponent = json.results[0].address_components[0];
 			console.log(addressComponent);
@@ -50,19 +66,19 @@ Geocoder.from(41.89, 12.49)
 // ------------
 
 // location object
-Geocoder.from({
+RNGeocoder.from({
 	latitude : 41.89,
 	longitude : 12.49
 });
 
 // latlng object
-Geocoder.from({
+RNGeocoder.from({
 	lat : 41.89,
 	lng : 12.49
 });
 
 // array
-Geocoder.from([41.89, 12.49]);
+RNGeocoder.from([41.89, 12.49]);
 ```
 
 # Error Codes
@@ -77,4 +93,4 @@ Geocoder.from([41.89, 12.49]);
 
 ## Release Notes
 
-See [CHANGELOG.md](https://github.com/marlove/react-native-geocoding/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/theRohitSuthar/react-map-geocoder/blob/master/CHANGELOG.md)

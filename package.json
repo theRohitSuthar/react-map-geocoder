@@ -1,23 +1,38 @@
 {
-  "name": "react-native-geocoding",
-  "version": "0.5.0",
+  "name": "react-map-geocoder",
+  "version": "1.0.0",
   "description": "A React Native module to transform a description of a location (i.e. street address, town name, etc.) into geographic coordinates (i.e. latitude and longitude) and vice versa.",
-  "main": "Geocoder.js",
-  "typings": "./index.d.ts",
+  "main": "RNGeocoder.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marlove/react-native-geocoding"
+    "url": "https://github.com/theRohitSuthar/react-map-geocoder"
+  },
+  "bugs": {
+    "url": "https://github.com/theRohitSuthar/react-map-geocoder/issues"
+  },
+  "homepage": "https://github.com/theRohitSuthar/react-map-geocoder#readme",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
   },
   "keywords": [
     "react-native",
     "ios",
     "android",
     "geocoder",
-    "geocoding"
+    "geocoding",
+    "google-geocoder"
   ],
   "authors": [
-    "Marco Lovetere <marco@marlove.net> (https://marlove.net)",
-    "Yairopro <yairopro@gmail.com>"
+    "Rohit Suthar <hi@RohitSuthar.com> (https://www.RohitSuthar.com)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  }
 }

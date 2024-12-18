@@ -52,9 +52,17 @@ export default Geocoder = {
 		if (!isNaN(params[0]) && !isNaN(params[1]))
 			queryParams = {latlng : `${params[0]},${params[1]}`};
 
+		// [latitude, longitude, language]
+		else if (params[0] instanceof Array && params[0].length == 3)
+			queryParams = {latlng : `${params[0][0]},${params[0][1]}`, language: params?.[0]?.language || 'en'};
+
 		// [latitude, longitude]
 		else if (params[0] instanceof Array)
 			queryParams = {latlng : `${params[0][0]},${params[0][1]}`};
+
+		// {latitude, longitude, language}  or {lat, lng, lang}
+		else if (params[0] instanceof Object && params[0].length == 3)
+			queryParams = {latlng : `${params[0].lat || params[0].latitude},${params[0].lng || params[0].longitude}`, language: params?.[0]?.lang || params?.[0]?.language || 'en'};
 
 		// {latitude, longitude}  or {lat, lng}
 		else if (params[0] instanceof Object)

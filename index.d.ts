@@ -39,7 +39,7 @@ declare namespace Geocoder {
     | number
     | number[]
     | LatLng
-    | { latitude: number; longitude: number }
+    | { latitude: number; longitude: number; language?: string }
     | string;
 
   function init(apiKey: string, options?: Object): void;
