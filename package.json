@@ -1,6 +1,6 @@
 {
   "name": "react-map-geocoder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React Native module to transform a description of a location (i.e. street address, town name, etc.) into geographic coordinates (i.e. latitude and longitude) and vice versa.",
   "main": "RNGeocoder.ts",
   "repository": {
